@@ -8,14 +8,14 @@ export default function Container({ children }) {
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
-  padding: 4rem 8rem;
+  padding: 6rem 8rem;
   @media only screen and (max-width: 1200px) {
-    padding: 5rem 6rem;
+    padding: 6rem 6rem;
   }
   @media only screen and (max-width: 1024px) {
-    padding: 5rem 4rem;
+    padding: 6rem 4rem;
   }
   @media only screen and (max-width: 768px) {
-    padding: 5rem 2rem;
+    padding: 6rem 2rem;
   }
 `;

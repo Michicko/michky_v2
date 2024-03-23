@@ -8,11 +8,11 @@ export default function TextBox() {
   return (
     <Wrapper>
       <div className="greeting">
+        <p>Hi there</p>  
         <span className="emoji">👋</span>
-        <p>Hi, I&apos;m</p>
       </div>
       <div className="name">
-        <h1>Michael Otaigbe,</h1>
+       <h1><span className="tiny">I&apos;m</span> Michael Otaigbe,</h1>
       </div>
       <div className="description">
         <Text>
@@ -36,19 +36,28 @@ const Wrapper = styled.div`
 
     .emoji {
       font-size: 2.5rem;
-      margin-right: 1rem;
+      /* margin-right: 1rem; */
+      margin-left: .6rem;
     }
 
     p {
-      font-size: 2.5rem;
-      font-weight: 500;
+      font-size: 2rem;
+      font-weight: 400;
     }
   }
 
   .name {
     h1 {
-      font-size: 3.5rem;
+      font-size: 3.2rem;
       font-weight: 600;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 2.5rem;
+      }
+
+      .tiny{
+        font-weight: 300;
+      }
     }
   }
 
