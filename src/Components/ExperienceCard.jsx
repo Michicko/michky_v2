@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function ExperienceCard({ experience }) {
   return (
     <Wrapper>
-      <a href={experience.link} className="link">
+      <a href={experience.link} className="link" target='_blank' rel="noopener">
         {experience.company}, <span className="sm">{experience.location}</span>
       </a>
       <p>
