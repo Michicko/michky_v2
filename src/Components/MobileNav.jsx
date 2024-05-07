@@ -4,12 +4,35 @@ import Logo from "./Layout/Logo";
 import MenuBtn from "./MenuBtn";
 import Socials from "./Socials";
 import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function MobileNav({ isMobileNavOpened, setIsMobileNavOpened }) {
   const location = useLocation();
   const {pathname} = location;
+  const [isMobile, setIsMobile] = useState(false);
 
-  const links = ["about", "experience", "contact"];
+  useEffect(() => {
+    const checkSize = () => {
+      if(window.innerWidth <= 768){
+        if(isMobile) return;
+        setIsMobile(true);
+      }else{
+        if(!isMobile) return
+        setIsMobile(false);
+      }
+    }
+
+    checkSize();
+
+    window.addEventListener('resize', checkSize);
+
+    return () => {
+      window.removeEventListener('resize', checkSize);
+    }
+  }, [isMobile])
+
+  const links = ["home", "blog", "contact"];
+
   const closeNav = () => {
     setIsMobileNavOpened(false)
   }
@@ -18,7 +41,8 @@ export default function MobileNav({ isMobileNavOpened, setIsMobileNavOpened }) {
     <Wrapper className={isMobileNavOpened ? "show" : ""}>
       <div className="bg">
         <div className="top">
-          <Logo to={"/"} />
+          <Logo to={"/"} handleOnClick={isMobile && isMobileNavOpened ? closeNav : null} />
+
           <MenuBtn
             type={"close"}
             handleOnClick={closeNav}
@@ -33,7 +57,7 @@ export default function MobileNav({ isMobileNavOpened, setIsMobileNavOpened }) {
                   : pathname === `/${el}`
                   ? "active"
                   : ""
-              }`} to={`/${el}`} onClick={closeNav}>
+              }`} to={`/${el == 'home' ? '' : el}`} onClick={closeNav}>
               {el}</Link>
             })
           }
@@ -71,14 +95,15 @@ const Wrapper = styled.div`
     top: 0;
     bottom: 0;
     left: 0;
-    width: 30rem;
+    width: 80%;
     background: var(--light);
     transform: translateX(-30rem);
     transition: transform 0.4s ease;
     display: flex;
     flex-direction: column;
+
     @media only screen and (max-width: 480px) {
-      width: 20rem;
+      width: 80%;
     }
   }
 
@@ -95,30 +120,42 @@ const Wrapper = styled.div`
   }
 
   .links{
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
+    align-items: flex-start;
     margin-top: 2rem;
+    margin-left: 2rem;
+
+    &>*:not(:last-child){
+      margin-bottom: .5rem;
+    }
   }
 
   .mobile-nav-link{
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 500;
     color: var(--dark); 
     text-decoration: none;
     display: inline-block;
-    text-transform: capitalize;
-    padding: 1.5rem 2rem;
-    border-bottom: 1px solid var(--dark);
+    text-transform: none;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid var(--darker);
+    border-color: transparent;
+    padding-left: 0;
+    padding-bottom: 0;
+
+
     &:hover, &.active{
-      color: #edae0e;
+      /* color: #edae0e; */
+      border-color: var(--darker);
     }
   }
 
   .foot {
     width: 100%;
-    padding-top: 2rem;
+    /* padding-top: 2rem; */
+    padding: 2rem 0;
     margin-top: auto;
-    border-top: 1px solid var(--dark);
     display: flex;
     justify-content: center;
 

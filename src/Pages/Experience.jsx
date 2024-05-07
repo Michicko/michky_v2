@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Bag from "../assets/experience.svg?react";
-import Heading from "../Components/Heading";
+// import Heading from "../Components/Heading";
 import Container from "../Components/Container";
 import ExperienceList from "../Components/ExperienceList";
 
@@ -11,7 +11,7 @@ export default function Experience() {
         <Container>
           <div className="heading-container">
             <Bag className="icon" />
-            <Heading type={"secondary"}>Work Experience</Heading>
+            {/* <Heading type={"secondary"}>Work Experience</Heading> */}
           </div>
         </Container>
       </Header>

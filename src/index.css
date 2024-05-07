@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
+@font-face {
+  font-family: 'Biotif';
+  src: url('./assets/fonts/Biotif-Regular.woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Bogart';
+  src: url('./assets/fonts/Bogart-Medium.woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 *,
 *::before,
 *::after {
@@ -24,6 +39,7 @@
   --darker: #212121;
   --light-brown: #d9d5c9;
   --light-purple: #c6c5c3;
+  --secondary: #edae0e;
   --danger: #d9534f;
   --success: #239923;
   --edit: #0808eb;
@@ -32,11 +48,17 @@
   --medium-bp: 48em; /* 768px*/
   --small-bp: 30em; /* 480px */
   --smallest-bp: 20em; /* 320px */
-  --base-text: 1.6rem;
-  --sm-text: 1.3rem;
+  --base-text: 2rem;
+  --sm-text: 1.5rem;
+  --h1: clamp(2.5rem, 6vmax, 6rem);
+  --h2: clamp(2rem, 3.5vmax, 3.5rem);
   --lh-lg: 1.8;
   --lh-sm: 1.5;
+  --font-heading: 'Bogart';
+  --font-body: 'Biotif';
 }
+
+body, html {height:100%; margin:0; padding: 0;}
 
 html{
   font-size: 62.5%;
@@ -46,5 +68,6 @@ html{
 
 body{
   background: var(--light-gray);
-  font-family: 'Poppins';
+  font-family: var(--font-body);
+  scroll-behavior: smooth;
 }

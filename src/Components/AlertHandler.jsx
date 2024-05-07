@@ -12,6 +12,7 @@ export default function AlertHandler({ type, message }) {
 const Wrapper = styled.div`
   padding: 2rem 1rem;
   width: 100%;
+  margin: 0 auto;
   margin-bottom: 2rem;
   max-width: 65rem;
   

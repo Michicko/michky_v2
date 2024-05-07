@@ -5,17 +5,19 @@ import Socials from "../Socials";
 export default function Footer() {
   return (
     <Wrapper>
+      <Text type={"sm"} center={true}>
+        Site designed and developed with love by me. &copy; Michky.{" "}
+        {new Date().getFullYear()}
+      </Text>
       <Socials />
-      <Text>&copy; Michky. {new Date().getFullYear()}</Text>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.footer`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  border-top: 1px solid var(--dark);
+  justify-content: space-between;
   padding: 2rem 8rem;
 
   @media only screen and (max-width: 1200px) {
@@ -28,4 +30,11 @@ const Wrapper = styled.footer`
     padding: 2rem 2rem;
   }
 
+  @media only screen and (max-width: 576px) {
+    flex-direction: column;
+    &>*:first-child{
+      margin-bottom: 2rem;
+      max-width: 70%;
+    }
+  }
 `;

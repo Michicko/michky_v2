@@ -1,45 +1,49 @@
 /* eslint-disable react/prop-types */
 import styled, { css } from "styled-components";
 
-export default function Heading({ type, mb, children }) {
-  if (type === "tertiary") {
-    return <Tertiary $mb={mb}>{children}</Tertiary>;
+export default function Heading(props) {
+  if (props.type === "h3") {
+    return <Tertiary {...props} />;
   }
-  if (type === "secondary") {
-    return <Secondary $mb={mb}>{children}</Secondary>;
+  if (props.type === "h2") {
+    return <Secondary {...props} />;
   }
-  return <Primary $mb={mb}>{children}</Primary>;
+
+  return <Primary {...props} />;
 }
 
 const defaultStyles = css`
-  font-weight: 600;
-  color: var(--dark);
+  font-weight: 500;
   line-height: var(--lh-sm);
-  margin-bottom: ${(props) => (props.$mb ? `${props.$mb}rem` : 0)};
+  font-family: var(--font-heading);
+  color: var(--darker);
+  text-transform: none;
+  margin-bottom: ${(props) => (props.$mb ? `${props.$mb}rem` : '1rem')};
+
+  &.center{
+    text-align: center;
+  }
+
+  &.capitalize{
+    text-transform: capitalize;
+  }
+
+  &.upper{
+    text-transform: uppercase;
+  }
 `;
 
 const Secondary = styled.h2`
   ${defaultStyles};
-  font-size: 2.5rem;
-
-  @media only screen and (max-width: 768px) {
-    font-size: 2rem;
-  }
+  font-size: var(--h2);
 `;
+
 const Primary = styled.h1`
   ${defaultStyles};
-  font-size: 3rem;
-  @media only screen and (max-width: 768px) {
-    font-size: 2.5rem;
-  }
+  font-size: var(--h1);
 `;
 
 const Tertiary = styled.h3`
   ${defaultStyles};
-  font-size: 2rem;
-  font-weight: 500;
-
-  @media only screen and (max-width: 768px) {
-    font-size: 1.7rem;
-  }
+  font-size: var(--h3);
 `;

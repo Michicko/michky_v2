@@ -10,10 +10,10 @@ export default function Navlist({ links }) {
       {links.map((link, i) => {
         return (
           <Link
-            to={`/${link}`}
+            to={`/${link === 'home' ? '' : link}`}
             key={i}
             className={`nav-link ${
-              (pathname === "/" && link === "about")
+              (pathname === "/" && link === "home")
                 ? "active"
                 : pathname === `/${link}`
                 ? "active"
@@ -29,7 +29,7 @@ export default function Navlist({ links }) {
 }
 
 const Links = styled.div`
-  display: flex;
+  display: inline-flex;
   align-items: center;
 
   @media only screen and (max-width: 768px) {

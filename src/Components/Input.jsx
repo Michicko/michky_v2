@@ -52,7 +52,7 @@ const defaultStyles = css`
 
 const CustomInput = styled.input`
   ${defaultStyles};
-  height: 4rem;
+  height: 4.5rem;
 `;
 
 const TextArea = styled.textarea`

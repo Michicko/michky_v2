@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Container from "../Components/Container";
-import Heading from "../Components/Heading";
+import Container from "../Components/Layout/Container";
+// import Heading from "../Components/Heading";
 import InputLabel from "../Components/InputLabel";
 import Input from "../Components/Input";
 import FormGroup from "../Components/FormGroup";
@@ -8,6 +8,9 @@ import Button from "../Components/Button";
 import { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import AlertHandler from "../Components/AlertHandler";
+import Heading from "../Components/Heading";
+import Text from "../Components/Text";
+import Seo from "../Components/Seo";
 
 export default function Contact() {
   const [formDetails, setFormDetails] = useState({
@@ -98,26 +101,27 @@ export default function Contact() {
   const timerFunc = (fn) => {
     timer.current = setTimeout(() => {
       fn();
-    }, 5000)
-  }
+    }, 5000);
+  };
 
   useEffect(() => {
-    if(status.isSuccess || status.isError){
+    if (status.isSuccess || status.isError) {
       timerFunc(reset);
     }
 
     return () => {
       clearTimeout(timer.current);
-    }
-  }, [status.isError, status.isSuccess])
-
+    };
+  }, [status.isError, status.isSuccess]);
 
   return (
     <>
+     <Seo title={'Contact'} siteName={'Michael Otaigbe (Solomon)'} description={'Software developer | Software Engineer | Web developer | Web designer'} />
       <Header>
         <Container>
           <div className="heading-container">
-            <Heading type={"secondary"}>Get in touch</Heading>
+            <Heading type={"h1"}>Get in touch</Heading>
+            <Text center={true}>You have an interesting project, drop me a message.</Text>
           </div>
         </Container>
       </Header>
@@ -178,6 +182,7 @@ export default function Contact() {
 
 const Header = styled.div`
   margin-top: 8rem;
+
   .icon {
     margin-right: 1rem;
   }
@@ -185,14 +190,22 @@ const Header = styled.div`
   .heading-container {
     display: flex;
     align-items: center;
-    margin-top: -2rem;
+    flex-direction: column;
   }
 `;
 
 const Wrapper = styled.main`
-  margin-top: -8rem;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 8rem;
 
   form {
-    max-width: 65rem;
+    max-width: 100%;
+    max-width: 82rem;
+    margin: 0 auto;
+
+    &>*:not(:last-child){
+      margin-bottom: 2rem;
+    }
   }
 `;

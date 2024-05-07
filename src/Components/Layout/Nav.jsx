@@ -6,7 +6,7 @@ import Logo from "./Logo";
 import MenuBtn from "../MenuBtn";
 
 export default function Nav() {
-  const links = ["about", "experience", "contact"];
+  const links = ["home", "blog", "contact"];
   const [scrolled, setSrolled] = useState(false);
   const [isMobileNavOpened, setIsMobileNavOpened] = useState(false);
 
@@ -65,6 +65,7 @@ const Navbar = styled.nav`
   right: 0;
   z-index: 200;
   padding: 0 8rem;
+  background: var(--light-gray);
 
   &.scrolled {
     background: var(--light-gray);

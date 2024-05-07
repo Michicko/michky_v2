@@ -36,8 +36,8 @@ const Button = styled.button`
   }
 
   .icon {
-    height: 3rem;
-    width: 3rem;
+    height: 2.5rem;
+    width: 2.5rem;
     fill: var(--dark);
   }
 `;
