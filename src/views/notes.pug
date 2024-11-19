@@ -1,0 +1,14 @@
+extends base
+
+block content 
+  +header('', 'center-md')
+    h1.heading.heading--primary Notes & Thoughts
+    p.text.text--md.center-md.flex--md.fd-c--md 
+      span A space where I publish toy projects i make in my free time, 
+      span notes about tech and updates about my personal life.
+  main.main 
+    section.container.section-content 
+      ul 
+        each note in notes 
+          +note(note) 
+    +cta()

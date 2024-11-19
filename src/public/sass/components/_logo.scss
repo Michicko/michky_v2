@@ -1,0 +1,14 @@
+@use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
+
+.logo {
+  text-decoration: none;
+
+  .logo__img {
+    height: 2.5rem;
+    width: 2.5rem;
+
+    @include multiplier("height", 2.5rem, $genQs);
+    @include multiplier("width", 2.5rem, $genQs);
+  }
+}

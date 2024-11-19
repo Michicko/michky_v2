@@ -1,0 +1,100 @@
+@font-face {
+  font-family: "Biotif";
+  src: url("/fonts/Biotif-Regular.woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bogart";
+  src: url("/fonts/Bogart-Medium.woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+$blue-100: #e5f2f2;
+$blue-200: #e1eeee;
+$blue-400: #00b7f1;
+$light: #fff;
+$gray-100: #f8f8f8;
+$dark-100: #d9d5c9;
+$dark-200: #c6c5c3;
+$dark-300: #9b9b9b;
+$dark-400: #888888;
+$dark-500: #383838;
+$dark-600: #212121;
+$secondary-400: #d43c2b;
+$secondary: #edae0e;
+$danger: #d9534f;
+$success: #239923;
+$edit: #0808eb;
+$shadow-1: 0 34px 54px rgba(0, 0, 0, 0.12);
+$xxs-space: .5rem;
+$xs-space: 1rem;
+$sm-space: 1.4rem;
+$base-space: 1.6rem;
+$largest-bp: 75em; /* 1200px */
+$large-bp: 64em; /* 1024px */
+$medium-bp: 48em; /* 768px*/
+$small-bp: 30em; /* 480px */
+$smallest-bp: 20em; /* 320px */
+$xs-text: 1rem;
+$sm-text: 1.4rem;
+$base-text: 1.6rem;
+$md-text: 1.8rem;
+$lg-text: 2rem;
+$xl-text: 2.5rem;
+$xxl-text: 3rem;
+$xxxl-text: 3.5rem;
+$iv-text: 4rem;
+$v-text: 4.5rem;
+$vi-text: 5rem;
+$vii-text: 6rem;
+$viii-text: 7rem;
+$h1: clamp(4rem, 6.5vmax, 9rem);
+$h2: clamp(2rem, 3.5vmax, 3.5rem);
+$lh-xs: 1;
+$lh-sm: 1.2;
+$lh-base: 1.5;
+$lh-lg: 1.8;
+$font-heading: "Bogart";
+$font-body: "Biotif";
+$bp-low: 12.5rem; /* 200px */
+$bp-xxs: 20rem; /* 320px */
+$bp-xxs: 23.5rem; /* 375px */
+$bp-xs: 30rem; /* 480px */
+$bp-sm: 36rem; /* 576px */
+$bp-md: 48rem; /* 768px*/
+$bp-lg: 64rem; /* 1024px */
+$bp-xl: 75rem; /* 1200px */
+$bp-2xl: 85.375rem; /* 1366px */
+$bp-3xl: 110rem; /* 1768px */
+$bp-4xl: 120rem; /* 1920px */
+$bp-5xl: 160rem; /* 2560px */
+
+$breakpoints: (
+  "mq-low": "(min-width: #{$bp-low})",
+  "mq-xxs": "(min-width: #{$bp-xxs})",
+  "mq-xs": "(min-width: #{$bp-xs})",
+  "mq-sm": "(min-width: #{$bp-sm})",
+  "mq-md": "(min-width: #{$bp-md})",
+  "mq-lg": "(min-width: #{$bp-lg})",
+  "mq-xl": "(min-width: #{$bp-xl})",
+  "mq-2xl": "(min-width: #{$bp-2xl})",
+  "mq-3xl": "(min-width: #{$bp-3xl})",
+  "mq-4xl": "(min-width: #{$bp-4xl})",
+  "mq-5xl": "(min-width: #{$bp-5xl})",
+  "mq-retina": "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)"
+);
+
+
+$queries: ("mq-low":1.1,"mq-xxs":1.2, "mq-xs":1.3, "mq-sm":1.4, "mq-md":1.5, "mq-lg":1.6, "mq-xl":1.7, "mq-2xl":1.8, "mq-3xl":2, "mq-4xl":2.1, "mq-5xl":2.2);
+
+$genQs: (
+  "mq-2xl": 1.2,
+  "mq-3xl": 1.3,
+  "mq-4xl": 1.4,
+  "mq-5xl": 1.5,
+);

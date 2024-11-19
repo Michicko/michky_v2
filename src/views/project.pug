@@ -1,0 +1,23 @@
+extends base
+
+block content 
+  +header(project.headerBg, 'with-bg')
+      h1.heading.heading--primary #{project.name}
+      .header__project-infos
+        p.text.text--md !{project.type} 
+        span.dot
+        .flex 
+          p.text.text--md !{project.category}
+          span.text.text--md /
+          p.text.text--md !{project.stack}
+        span.dot
+        p.text.text--md !{project.date.split('-')[0]} 
+      img(src=`/images/${project.coverImage}`, alt=`${project.name}`).header__img
+      
+  main.main
+    section.section.container
+      article.article !{project.content}
+      - const projectInfo = {position: project.position, work: `${project.category}, ${project.stack}`, organization: project.organization, year: project.date.split('-')[0], website: project.website}
+      +project_footer_card(projectInfo)
+    +cta()
+    

@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="shortcut icon", href="/images/favicon.ico", type="image/x-icon")
+    link(rel="stylesheet" href="/css/styles.css")
+    title(key="title") Michael Otaigbe | #{title}
+    script(src="/js/index.js" type="module" defer) 
+
+    block helmet
+
+  include ./partials/_mixins.pug 
+  include ./partials/_nav.pug
+  include ./partials/_header.pug
+  include ./partials/_mobileNav.pug
+  body
+    +nav()
+    block content
+    include ./partials/_footer.pug
+  

@@ -1,0 +1,11 @@
+mixin mobileNav(navlist)
+  .nav__mobile
+    .nav__mobile-bg
+      .top
+        +logo()
+      div.nav__mobile-links
+        each link in navlist
+          - const classname = (url === "/" && link === "home") ? "nav__mobile-link nav__mobile-link--active" : url === `/${link}` ? "nav__mobile-link nav__mobile-link--active" : "nav__mobile-link"
+          a(href=`/${link === 'home' ? '' : link}` class=classname) #{link}
+      div.nav__mobile-foot
+        include ./_socials.pug

@@ -1,0 +1,15 @@
+extends base
+
+block content 
+  +header()
+    .note-header-content
+      h1.heading.heading--primary !{note.title}
+      .note-info
+        a.link.no-hvr(href=`/tags/${note.category.replace(/ /g, '-').toLowerCase()}`) !{note.category}
+        p.text.gray !{note.date} 
+      p.text.text--md !{note.description}
+  main.main 
+    section.container 
+      article.article !{note.content}
+    +cta()
+    

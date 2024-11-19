@@ -1,0 +1,37 @@
+@use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  width: 100%;
+
+  & > *:first-child {
+    margin-bottom: 2rem;
+    max-width: 70%;
+  }
+
+  @include breakpoints(mq-md) {
+    padding: 2rem 4rem;
+    flex-direction: row;
+    text-align: initial;
+
+    & > *:first-child {
+      margin-bottom: 0;
+      max-width: 100%;
+    }
+  }
+
+  @include breakpoints(mq-lg) {
+     padding: 2rem 6rem;
+  }
+
+  @include multiplier("padding-right", 6rem, $genQs);
+  @include multiplier("padding-left", 6rem, $genQs);
+  @include multiplier("padding-top", 2rem, $genQs);
+  @include multiplier("padding-bottom", 2rem, $genQs);
+}

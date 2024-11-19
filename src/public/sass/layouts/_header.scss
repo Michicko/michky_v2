@@ -1,0 +1,158 @@
+@use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
+
+.header {
+  width: 100%;
+  margin-top: 8rem;
+  background: $gray-100;
+  position: relative;
+  width: 100%;
+  min-height: 40rem;
+
+  @include breakpoints(mq-md) {
+    min-height: 45rem;
+  }
+
+  @include breakpoints(mq-lg) {
+    min-height: 50rem;
+  }
+
+  @include multiplier("margin-top", 8rem, $genQs);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+
+    @include breakpoints(mq-md) {
+      padding: 4rem 0;
+      margin-top: 8rem;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+    }
+
+    .lead {
+      span {
+        display: inline;
+
+        @include breakpoints(mq-md) {
+          display: block;
+        }
+      }
+
+      @include breakpoints(mq-md) {
+        align-self: flex-end;
+      }
+    }
+  }
+
+  &.padded-x &__content {
+    @include breakpoints(mq-md) {
+      padding: 0 2rem;
+    }
+    @include breakpoints(mq-lg) {
+      padding: 0 5rem;
+    }
+  }
+
+  &.center &__content {
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.center-md &__content {
+    @include breakpoints(mq-md) {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .greeting {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    @include multiplier("margin-bottom", 1rem, $queries);
+
+    .lead {
+      font-size: $sm-text;
+      color: $dark-600;
+      @include multiplier("font-size", $sm-text, $queries);
+    }
+
+    .emoji {
+      font-size: $sm-text;
+      margin-left: 0.5rem;
+      @include multiplier("font-size", $sm-text, $queries);
+      @include multiplier("margin-left", 0.5rem, $queries);
+    }
+  }
+
+  .note-header-content {
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    column-gap: 4rem;
+    grid-template-areas:
+      "first second"
+      "third second";
+
+    & > *:nth-child(1) {
+      grid-area: first;
+    }
+    & > *:nth-child(2) {
+      grid-area: second;
+    }
+    & > *:nth-child(3) {
+      grid-area: third;
+    }
+  }
+
+  .note-info {
+    justify-self: flex-end;
+
+    & > *:last-child {
+      margin-top: 1rem;
+    }
+  }
+
+  &__project-infos,
+  .flex {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  &__project-infos {
+    margin-bottom: 2rem;
+
+    @include breakpoints(mq-md) {
+      margin-bottom: 4rem;
+    }
+  }
+
+  &__img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow($shadow-1);
+    margin: 0 auto;
+  }
+
+  &.with-bg {
+    position: relative;
+
+    &::before {
+      display: block;
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 20rem;
+      background: $gray-100;
+    }
+  }
+}

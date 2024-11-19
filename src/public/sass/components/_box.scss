@@ -1,0 +1,50 @@
+@use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
+
+.box {
+  position: absolute;
+  top: 0;
+  right: 4rem;
+  animation-name: bounce;
+  animation-duration: .5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+
+  .spinning-box {
+    height: 10rem;
+    width: 10rem;
+    background: $blue-200;
+    border-radius: 0.5rem;
+    display: block;
+    // animation-name: rotate;
+    // animation-duration: 2s;
+    // animation-timing-function: ease-in-out;
+    // animation-iteration-count: infinite;
+  }
+}
+
+@keyframes rotate {
+  0%,
+  100% {
+    transform-origin: center;
+  }
+
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 2rem, 0);
+  }
+}

@@ -1,0 +1,24 @@
+extends base
+
+block helmet 
+  title How to convert md to html
+
+block content 
+  +header()
+    .greeting
+      .lead Hi 
+      span.emoji 👋
+    h1.heading.heading--primary
+      span I&apos;m Michael.
+      span.block A Software Developer.
+    p.text.text--md.lead With 3+ years of professional experience in ideating, 
+      span.block architecting and building solutions for digital products.
+      //- .box
+      //-   .spinning-box
+        //- .shadow
+  section.section.container.container--sm
+    .project__list
+      each project in projects 
+        +project(project)
+  +cta()
+      

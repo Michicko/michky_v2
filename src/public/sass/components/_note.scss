@@ -1,0 +1,99 @@
+@use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
+
+.note {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 2rem;
+  padding-bottom: 4rem;
+  position: relative;
+  margin-bottom: 1rem;
+
+  @include breakpoints(mq-md) {
+    grid-column-gap: 5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &::before {
+    position: absolute;
+    top: 5rem;
+    left: 2.75rem;
+    height: calc(100% - 4.5rem);
+    width: 1px;
+    background: $dark-300;
+    content: "";
+    display: block;
+
+    @include breakpoints(mq-md) {
+      top: 6.5rem;
+      height: calc(100% - 6.5rem);
+      left: 3rem;
+    }
+  }
+
+  &__content {
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .date {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 4.5rem;
+    width: 4.5rem;
+    background: $dark-500;
+    color: $light;
+    border-radius: 1rem;
+
+    .month {
+      font-size: $sm-text;
+      text-transform: uppercase;
+      font-weight: 300;
+      margin-bottom: .25rem;
+    }
+
+    .day {
+      font-size: $base-text;
+      font-weight: 600;
+    }
+
+    @include breakpoints(mq-md) {
+      width: 6rem;
+      height: 6rem;
+    }
+  }
+
+  h2 {
+    font-size: $md-text;
+    font-weight: 600;
+    color: $dark-600;
+    margin-bottom: 1rem;
+
+
+    @include breakpoints(mq-md) {
+      font-size: $lg-text;
+    }
+
+    @include breakpoints(mq-lg) {
+      font-size: $xl-text;
+    }
+  }
+
+  .category {
+    font-weight: 100;
+    font-size: $sm-text;
+    text-transform: uppercase;
+    color: $dark-500;
+    margin-bottom: 2rem;
+  }
+
+  .cover-img {
+    margin-top: 2rem;
+    border-radius: 2rem;
+    width: 100%;
+    height: auto;
+  }
+}

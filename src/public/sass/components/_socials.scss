@@ -1,0 +1,30 @@
+@use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
+
+.socials {
+  display: grid;
+  align-items: center;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(3, 2rem);
+   @include multiplier("grid-gap", 1.5rem, $genQs);
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__icon {
+    height: 2rem;
+    width: 2rem;
+    fill: $dark-600;
+    transition: transform 0.3s ease;
+
+    @include multiplier("height", 2rem, $genQs);
+    @include multiplier("width", 2rem, $genQs);
+  }
+
+  @media only screen and (min-width: $bp-lg) {
+    &__link:hover &__icon {
+      transform: translateY(-0.5rem);
+    }
+  }
+}

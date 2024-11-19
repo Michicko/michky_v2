@@ -1,0 +1,71 @@
+@use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
+
+.heading {
+  font-family: $font-heading;
+  font-weight: 400;
+  color: $dark-600;
+  line-height: $lh-sm;
+
+  span {
+    font-size: inherit;
+  }
+
+  &--primary {
+    font-size: $v-text;
+    font-size: $h1;
+
+    span {
+      display: block;
+    }
+  }
+
+  &--secondary {
+    font-size: $xl-text;
+
+    @include multiplier("font-size", $v-text, $genQs);
+  }
+}
+
+.text {
+  font-family: $font-body;
+  font-size: $base-text;
+  font-weight: 400;
+  color: $dark-500;
+  line-height: $lh-base;
+
+  &.upper {
+    text-transform: uppercase;
+  }
+
+  &.gray{
+    color: $dark-400;
+  }
+
+  @include multiplier("font-size", $base-text, $genQs);
+
+  &--sm {
+    font-size: $sm-text;
+    @include multiplier("font-size", $sm-text, $genQs);
+  }
+
+  &--md {
+    font-size: $md-text;
+    @include multiplier("font-size", $md-text, $genQs);
+  }
+
+  &--big {
+    font-size: $lg-text;
+    @include multiplier("font-size", $lg-text, $genQs);
+  }
+
+  &.center {
+    text-align: center;
+  }
+
+  &.center-md {
+    @include breakpoints(mq-md) {
+      text-align: center;
+    }
+  }
+}

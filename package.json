@@ -1,0 +1,57 @@
+{
+  "name": "michky_v2",
+  "version": "1.0.0",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "type": "module",
+  "scripts": {
+    "watch": "tsc -w",
+    "build:typescript": "tsc",
+    "watch:js": "parcel watch src/public/js/index.ts --dist-dir dist/public/js/",
+    "build:js": "parcel build src/public/js/index.ts --dist-dir dist/public/js/",
+    "watch:sass": "sass --style=compressed --watch src/public/sass/:dist/public/css",
+    "build:sass": "sass --style=compressed src/public/sass/:dist/public/css",
+    "clean": "rm -rf dist",
+    "dev": "nodemon dist/server.js",
+    "start": "node dist/server.js",
+    "start:prod": "NODE_ENV=production node dist/server.js",
+    "copy-assets": "cp -r src/views dist \n cp -r src/public/fonts dist/public/fonts \n cp -r src/public/images dist/public",
+    "build": "npm-run-all clean build:typescript copy-assets build:sass build:js"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "./src"
+    ],
+    "ext": "ts,js,pug,md",
+    "events": {
+      "restart": "npm run copy-assets"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "highlight.js": "^11.10.0",
+    "marked": "^15.0.0",
+    "mongoose": "^8.8.0",
+    "pug": "^3.0.3",
+    "sass": "^1.80.6",
+    "slugify": "^1.6.6",
+    "snarkdown": "^2.0.0",
+    "tinycolor2": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.9.0",
+    "@types/pug": "^2.0.10",
+    "@types/tinycolor2": "^1.4.6",
+    "morgan": "^1.10.0",
+    "npm-run-all": "^4.1.5",
+    "parcel": "^2.13.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.6.3"
+  }
+}

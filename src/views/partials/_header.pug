@@ -1,0 +1,5 @@
+mixin header(bg, className)
+  - const backG = bg ? bg : '#f8f8f8'; 
+  header.header.container(style=`background: ${backG}` class=`${className}`) 
+    .header__content
+      block

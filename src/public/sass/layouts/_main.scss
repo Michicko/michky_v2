@@ -1,0 +1,109 @@
+@use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
+
+.main {
+  padding: 2rem 0;
+
+  & > *:not(:last-child) {
+    margin-bottom: 5rem;
+  }
+
+  .section-content,
+  .article{
+    max-width: 68rem;
+    margin: 0 auto;
+    margin-bottom: 8rem;
+    @include multiplier("max-width", 68rem, $genQs);
+    @include multiplier("margin-bottom", 8rem, $genQs);
+  }
+
+  .article{
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-size: inherit;
+      color: inherit;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: $iv-text;
+    }
+
+    h2 {
+      font-size: $xxl-text;
+    }
+
+    h3 {
+      font-size: $lg-text;
+    }
+
+    h4 {
+      font-size: $md-text;
+      font-weight: 500;
+    }
+
+    p,
+    li {
+      color: inherit;
+      font-weight: 400;
+      color: $dark-500;
+      line-height: $lh-base;
+      margin-bottom: 1rem;
+    }
+
+    ul,
+    ol {
+      padding-left: 3rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+    }
+
+    p,
+    li,
+    a {
+      font-size: $base-text;
+    }
+
+    a {
+      font-size: $base-text;
+      font-weight: 400;
+      font-family: $font-body;
+      text-decoration: none;
+      color: $dark-500;
+      position: relative;
+
+      &::before {
+        content: "";
+        width: 100%;
+        height: 2px;
+        background: $dark-500;
+        bottom: 0;
+        position: absolute;
+        transition: bottom 0.2s ease;
+      }
+
+      @include multiplier("font-size", $base-text, $genQs);
+    }
+
+    pre code {
+      border-radius: 0.625rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        Liberation Mono, Courier New, monospace;
+      margin: 0 0 $sm-space;
+      overflow: auto;
+      padding: $sm-space;
+      font-size: $sm-text;
+      line-height: 1.5;
+    }
+  }
+}

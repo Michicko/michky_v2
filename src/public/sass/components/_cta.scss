@@ -1,0 +1,34 @@
+@use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 35rem;
+
+  h2 {
+    font-size: $xl-text;
+    line-height: 1.2;
+    font-family: $font-heading;
+    color: $dark-600;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-weight: 500;
+
+    @include breakpoints(mq-md) {
+      font-size: $v-text;
+    }
+
+    @include breakpoints(mq-lg) {
+      font-size: $vi-text;
+    }
+
+    @include multiplier("font-size", $iv-text, $genQs);
+    @include multiplier("margin-bottom", 2rem, $genQs);
+  }
+}

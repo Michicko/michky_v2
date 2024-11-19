@@ -1,0 +1,70 @@
+@use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
+
+.project-page {
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-size: inherit;
+    color: inherit;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  h1 {
+    font-size: $iv-text;
+  }
+
+  h2 {
+    font-size: $xxl-text;
+  }
+
+  h3 {
+    font-size: $lg-text;
+  }
+
+  h4 {
+    font-size: $md-text;
+    font-weight: 500;
+  }
+
+  p,
+  li {
+    color: inherit;
+    font-weight: 400;
+    color: $dark-500;
+    line-height: $lh-base;
+  }
+
+  ul,
+  ol {
+    padding-left: 3rem;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+
+  p,
+  li,
+  a {
+    font-size: $base-text;
+  }
+
+  a {
+    color: $blue-400;
+    font-family: inherit;
+    font-weight: 400;
+    cursor: pointer;
+
+    &:hover {
+      color: $secondary-400;
+    }
+  }
+}
