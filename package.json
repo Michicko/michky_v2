@@ -15,7 +15,8 @@
     "start": "node dist/server.js",
     "start:prod": "NODE_ENV=production node dist/server.js",
     "copy-assets": "cp -r src/views dist \n cp -r src/public/fonts dist/public/fonts \n cp -r src/public/images dist/public",
-    "build": "npm-run-all clean build:typescript build:sass build:js copy-assets | gnomon"
+    "build:dev": "npm-run-all clean build:typescript build:sass build:js copy-assets | gnomon",
+    "build": "npm-run-all clean build:typescript build:sass build:js copy-assets"
   },
   "nodemonConfig": {
     "watch": [
