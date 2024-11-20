@@ -31,10 +31,13 @@
   &__coverImage {
     height: auto;
     display: block;
-    margin-bottom: 7rem;
+    margin-bottom: 4rem;
     max-width: 72%;
     margin-left: auto;
     margin-right: auto;
+    @include breakpoints(mq-lg) {
+      margin-bottom: 7rem;
+    }
     @include multiplier("margin-bottom", 7rem, $genQs);
   }
 
@@ -58,12 +61,16 @@
   }
 
   &__category {
-    font-size: $base-text;
+    font-size: $sm-text;
     font-weight: 100;
-    color: $dark-600;
+    color: $dark-500;
     font-family: $font-body;
     text-transform: uppercase;
     margin-bottom: 1rem;
+    
+    @include breakpoints(mq-lg) {
+      font-size: $base-text;
+    }
     @include multiplier("font-size", $base-text, $genQs);
   }
 
@@ -87,10 +94,11 @@
     width: 100%;
     max-width: 74rem;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 4rem 2rem;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
+    column-gap: 1rem;
+    row-gap: 2rem;
     background: $dark-600;
     border-radius: 2rem;
     color: $light;
@@ -100,8 +108,13 @@
       font-size: $sm-text;
       font-weight: 300;
       text-transform: uppercase;
-      margin-bottom: 2rem;
+      margin-bottom: .5rem;
       color: $dark-200;
+
+
+      @include breakpoints(mq-md) {
+        margin-bottom: 1rem;
+      }
     }
 
     h3 {
@@ -110,15 +123,23 @@
       }
 
       span:first-child{
-        margin-bottom: 1rem;
+        margin-bottom: .5rem;
+
+        @include breakpoints(mq-md) {
+          margin-bottom: 1rem;
+        }
       }
 
-      font-size: $md-text;
-      font-weight: 500;
+      font-size: $base-text;
+      font-weight: 400;
       text-transform: capitalize;
+      @include breakpoints(mq-md) {
+        font-size: $md-text;
+      }
     }
 
     @include breakpoints(mq-md) {
+   
       grid-template-columns: repeat(2, 1fr);
       padding: 4rem;
       gap: 4rem;

@@ -30,7 +30,10 @@
     }
 
     h1 {
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    h1.land {
     }
 
     .lead {
@@ -72,48 +75,77 @@
   .greeting {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
-    @include multiplier("margin-bottom", 1rem, $queries);
+    margin-bottom: 2rem;
 
     .lead {
-      font-size: $sm-text;
       color: $dark-600;
-      @include multiplier("font-size", $sm-text, $queries);
+      font-weight: 500;
     }
 
     .emoji {
-      font-size: $sm-text;
       margin-left: 0.5rem;
-      @include multiplier("font-size", $sm-text, $queries);
       @include multiplier("margin-left", 0.5rem, $queries);
+    }
+
+    .lead,
+    .emoji {
+      font-size: $lg-text;
     }
   }
 
   .note-header-content {
     display: grid;
-    grid-template-columns: 5fr 2fr;
-    column-gap: 4rem;
-    grid-template-areas:
-      "first second"
-      "third second";
+    grid-template-columns: 1fr;
 
     & > *:nth-child(1) {
-      grid-area: first;
+      order: 1;
     }
+
     & > *:nth-child(2) {
-      grid-area: second;
+      order: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: 1rem;
     }
+
     & > *:nth-child(3) {
-      grid-area: third;
+      order: 2;
+      margin-bottom: 4rem;
     }
+
+    @include breakpoints(mq-md) {
+      grid-template-columns: 5fr 2fr;
+      grid-template-areas:
+        "first second"
+        "third second";
+
+      & > *:nth-child(1) {
+        grid-area: first;
+      }
+
+      & > *:nth-child(2) {
+        grid-area: second;
+        justify-self: flex-end;
+        order: 2;
+      }
+
+      & > *:nth-child(3) {
+        grid-area: third;
+        order: 3;
+        margin-bottom: 0;
+      }
+    }
+
+    column-gap: 4rem;
   }
 
   .note-info {
-    justify-self: flex-end;
+    // justify-self: flex-end;
 
-    & > *:last-child {
-      margin-top: 1rem;
-    }
+    // & > *:last-child {
+    //   margin-top: 1rem;
+    // }
   }
 
   &__project-infos,
@@ -126,6 +158,24 @@
 
   &__project-infos {
     margin-bottom: 2rem;
+
+    p {
+      display: inline;
+      font-size: calc($sm-text + 0.1rem);
+      font-weight: 300;
+      color: $dark-500;
+      text-transform: capitalize;
+
+      @include breakpoints(mq-sm) {
+        font-size: calc($base-text + 0.2rem);
+      }
+
+      @include breakpoints(mq-md) {
+        font-size: calc($md-text + 0.2rem);
+      }
+
+      @include multiplier("font-size", $md-text, $genQs);
+    }
 
     @include breakpoints(mq-md) {
       margin-bottom: 4rem;
@@ -151,8 +201,12 @@
       left: 0;
       right: 0;
       width: 100%;
-      height: 20rem;
+      height: 10rem;
       background: $gray-100;
+
+      @include breakpoints(mq-md) {
+        height: 20rem;
+      }
     }
   }
 }

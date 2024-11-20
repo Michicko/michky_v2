@@ -4,14 +4,14 @@ block content
   +header(project.headerBg, 'with-bg')
       h1.heading.heading--primary #{project.name}
       .header__project-infos
-        p.text.text--md !{project.type} 
+        p !{project.type} 
         span.dot
         .flex 
-          p.text.text--md !{project.category}
-          span.text.text--md /
-          p.text.text--md !{project.stack}
+          p !{project.category}
+          span.text.tex--md /
+          p !{project.stack}
         span.dot
-        p.text.text--md !{project.date.split('-')[0]} 
+        p !{project.date.split('-')[0]} 
       img(src=`/images/${project.coverImage}`, alt=`${project.name}`).header__img
       
   main.main

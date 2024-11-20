@@ -17,7 +17,7 @@
   &::before {
     position: absolute;
     top: 5rem;
-    left: 2.75rem;
+    left: 2.25rem;
     height: calc(100% - 4.5rem);
     width: 1px;
     background: $dark-300;
@@ -37,6 +37,18 @@
     }
   }
 
+  p.desc{
+    font-size: $base-text;
+    font-weight: 400;
+    color: $dark-500;
+    line-height: 1.5;
+
+
+    @include breakpoints(mq-md) {
+      font-size: $md-text;
+    }
+  }
+
   .date {
     display: flex;
     flex-direction: column;
@@ -49,15 +61,23 @@
     border-radius: 1rem;
 
     .month {
-      font-size: $sm-text;
+      font-size: $xs-text;
       text-transform: uppercase;
       font-weight: 300;
       margin-bottom: .25rem;
+
+      @include breakpoints(mq-md) {
+        font-size: $sm-text;
+      }
     }
 
     .day {
-      font-size: $base-text;
-      font-weight: 600;
+      font-size: $sm-text;
+      font-weight: 500;
+
+      @include breakpoints(mq-md) {
+        font-size: $base-text;
+      }
     }
 
     @include breakpoints(mq-md) {

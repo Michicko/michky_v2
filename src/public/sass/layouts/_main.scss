@@ -5,19 +5,19 @@
   padding: 2rem 0;
 
   & > *:not(:last-child) {
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
   }
 
   .section-content,
-  .article{
+  .article {
     max-width: 68rem;
     margin: 0 auto;
-    margin-bottom: 8rem;
+    margin-bottom: 4rem;
     @include multiplier("max-width", 68rem, $genQs);
     @include multiplier("margin-bottom", 8rem, $genQs);
   }
 
-  .article{
+  .article {
     h1,
     h2,
     h3,
@@ -94,7 +94,7 @@
 
       @include multiplier("font-size", $base-text, $genQs);
     }
-
+    
     pre code {
       border-radius: 0.625rem;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
@@ -104,6 +104,7 @@
       padding: $sm-space;
       font-size: $sm-text;
       line-height: 1.5;
+      scrollbar-width: thin;
     }
   }
 }

@@ -81,7 +81,7 @@ mixin note(note)
         - console.log(note)
         h2 !{note.title}
         p.category !{note.category} 
-      p.text.text--md !{note.description}
+      p.desc !{note.description}
       if note.coverImage 
         img.cover-img(src=`${note.coverImage}`, alt=`${note.title}`)
 
