@@ -30,14 +30,14 @@ export const generateLinearGradient = () => {
 
 type valueof<T> = T[keyof T];
 
-type frontmatter = {
-  [key: string]: string | string[];
+type Frontmatter = {
+  [key: string]: any;
 };
 
 // code from https://lebcit.github.io/posts/create-a-simple-markdown-based-blog-in-nodejs/
 export const parseFrontMatter = (text: string, delimiter = "---") => {
   const lines = text.split("\n");
-  const frontmatter: frontmatter = {};
+  const frontmatter: Frontmatter = {};
 
   let i = 0;
   if (!lines[i].startsWith(delimiter)) {
@@ -48,18 +48,20 @@ export const parseFrontMatter = (text: string, delimiter = "---") => {
   while (i < lines.length && !lines[i].startsWith(delimiter)) {
     const line = lines[i].trim();
     const separatorIndex = line.indexOf(":");
+    
     if (separatorIndex === -1) {
       throw new Error(`Invalid front matter syntax: ${line}`);
     }
+
     const key: keyof typeof frontmatter = line.slice(0, separatorIndex).trim();
-    let value: valueof<frontmatter> = line.slice(separatorIndex + 1).trim();
+    let value: valueof<Frontmatter> = line.slice(separatorIndex + 1).trim();
 
     // Check if value is wrapped in brackets
     if (value.startsWith("[") && value.endsWith("]")) {
       // Remove brackets and split into array elements
       const trimmedValue = value.slice(1, -1).trim();
       if (trimmedValue.length > 0) {
-        value = trimmedValue.split(",").map((item) => item.trim());
+        value = trimmedValue.split(",").map((item: string) => item.trim());
       } else {
         value = [];
       }
