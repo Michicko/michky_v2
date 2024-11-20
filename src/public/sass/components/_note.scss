@@ -98,7 +98,7 @@
     }
 
     @include breakpoints(mq-lg) {
-      font-size: $xl-text;
+      font-size: $xxl-text;
     }
   }
 
@@ -107,7 +107,7 @@
     font-size: $sm-text;
     text-transform: uppercase;
     color: $dark-500;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
 
   .cover-img {

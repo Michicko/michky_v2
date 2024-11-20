@@ -33,9 +33,6 @@
       margin-bottom: 2rem;
     }
 
-    h1.land {
-    }
-
     .lead {
       span {
         display: inline;
@@ -49,6 +46,11 @@
         align-self: flex-end;
       }
     }
+  }
+
+  &__text-box{
+    position: relative;
+    z-index: 20;
   }
 
   &.padded-x &__content {
@@ -159,6 +161,10 @@
   &__project-infos {
     margin-bottom: 2rem;
 
+    @include breakpoints(mq-md) {
+      margin-bottom: 4rem;
+    }
+
     p {
       display: inline;
       font-size: calc($sm-text + 0.1rem);
@@ -175,10 +181,6 @@
       }
 
       @include multiplier("font-size", $md-text, $genQs);
-    }
-
-    @include breakpoints(mq-md) {
-      margin-bottom: 4rem;
     }
   }
 

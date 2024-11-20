@@ -2,16 +2,17 @@ extends base
 
 block content 
   +header(project.headerBg, 'with-bg')
-      h1.heading.heading--primary #{project.name}
-      .header__project-infos
-        p !{project.type} 
-        span.dot
-        .flex 
-          p !{project.category}
-          span.text.tex--md /
-          p !{project.stack}
-        span.dot
-        p !{project.date.split('-')[0]} 
+      .header__text-box 
+        h1.heading.heading--primary #{project.name}
+        .header__project-infos
+          p !{project.type} 
+          span.dot
+          .flex 
+            p !{project.category}
+            span.text.tex--md /
+            p !{project.stack}
+          span.dot
+          p !{project.date.split('-')[0]} 
       img(src=`/images/${project.coverImage}`, alt=`${project.name}`).header__img
       
   main.main
