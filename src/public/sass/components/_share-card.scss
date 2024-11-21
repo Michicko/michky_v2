@@ -1,0 +1,56 @@
+@use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
+
+.share-card {
+  background: $dark-600;
+  border-radius: 2rem;
+  max-width: 74rem;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 25rem;
+
+  @include breakpoints(mq-md) {
+    min-height: 30rem;
+  }
+
+  h5 {
+    margin-bottom: 5rem;
+    font-size: $xl-text;
+    font-weight: 500;
+    color: $light;
+    text-transform: capitalize;
+    font-family: "Bogart";
+
+
+  @include breakpoints(mq-md) {
+    font-size: $xxl-text;
+  }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    @include breakpoints(mq-md) {
+        gap: 4rem;
+      }
+  }
+
+  &__icon {
+    height: 2.2rem;
+    width: 2.2rem;
+    fill: $light;
+  }
+
+  &__link.copy-btn {
+    background: transparent;
+    outline: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}

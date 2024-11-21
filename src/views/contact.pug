@@ -1,7 +1,11 @@
 extends base
 
 block content 
-  +header('', 'center-md')
+  +header('', 'center-md short')
     h1.heading.heading--primary Contact Me
     p.text.text--md.center-md.flex--md.fd-c--md 
       span Drop me a message and i'll get back to you shortly.
+  main.main 
+    section.container
+      .section-content
+        include ./partials/_contacts-form.pug

@@ -17,12 +17,26 @@
     min-height: 50rem;
   }
 
+  &.short {
+    min-height: 35rem;
+  }
+
   @include multiplier("margin-top", 8rem, $genQs);
 
   &__content {
     display: flex;
     flex-direction: column;
     margin-top: 4rem;
+
+    & > * {
+      opacity: 0;
+    }
+
+    @for $i from 1 through 3 {
+      & > *:nth-child(#{$i}) {
+        @include fade-in(0.5s, $i * 0.2s);
+      }
+    }
 
     @include breakpoints(mq-md) {
       padding: 4rem 0;
@@ -48,7 +62,7 @@
     }
   }
 
-  &__text-box{
+  &__text-box {
     position: relative;
     z-index: 20;
   }
@@ -57,6 +71,7 @@
     @include breakpoints(mq-md) {
       padding: 0 2rem;
     }
+
     @include breakpoints(mq-lg) {
       padding: 0 5rem;
     }
@@ -117,10 +132,13 @@
     }
 
     @include breakpoints(mq-md) {
-      grid-template-columns: 5fr 2fr;
-      grid-template-areas:
-        "first second"
-        "third second";
+      & {
+        grid-template-columns: 5fr 2fr;
+        grid-template-areas:
+          "first second"
+          "third second";
+        column-gap: 4rem;
+      }
 
       & > *:nth-child(1) {
         grid-area: first;
@@ -138,8 +156,6 @@
         margin-bottom: 0;
       }
     }
-
-    column-gap: 4rem;
   }
 
   .note-info {

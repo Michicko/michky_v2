@@ -1,0 +1,66 @@
+@use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
+
+.form {
+  &__contact {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  &__input-text {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid $dark-500;
+    background: transparent;
+    color: $dark-500;
+  }
+
+  &__input-text.textarea {
+    resize: none;
+  }
+
+  &__input-text,
+  &__btn,
+  &__input-text::placeholder {
+    font-size: $base-text;
+    font-weight: 400;
+    outline: transparent;
+  }
+
+  &__btn {
+    background: $dark-500;
+    color: $light;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    outline: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:hover,
+    &:disabled {
+      background: $dark-600;
+    }
+  }
+
+  &__alert {
+    font-weight: 300;
+    font-size: $sm-text;
+    margin-bottom: 1rem;
+    text-align: center;
+    display: none;
+
+    &.error {
+      color: $secondary-400;
+    }
+
+    &.success {
+      color: $success;
+    }
+
+    &__error,
+    &__success {
+      display: block;
+    }
+  }
+}

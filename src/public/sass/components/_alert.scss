@@ -1,0 +1,50 @@
+@use '../abstract/variables' as *;
+@use '../abstract/mixins' as *;
+@use "sass:color";
+
+.alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  z-index: 800;
+  text-align: center;
+  font-size: $base-text;
+  font-weight: 400;
+  animation: slideIn .3s linear;
+
+
+  &.success {
+    background: color.adjust($success, $lightness: 55%);
+    color: $success;
+  }
+
+  &.error {
+    background: color.adjust($secondary-400, $lightness: 40%);
+    color: $secondary-400;
+  }
+
+  .close-btn{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    font-size: $base-text;
+    font-weight: 600;
+    color: $secondary-400;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+@keyframes slideIn {
+    from{
+        transform: translateY(-100%);
+    }
+
+    to{
+        transform: translateY(0%);
+    }
+}

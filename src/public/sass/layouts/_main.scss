@@ -12,7 +12,7 @@
   .article {
     max-width: 68rem;
     margin: 0 auto;
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
     @include multiplier("max-width", 68rem, $genQs);
     @include multiplier("margin-bottom", 8rem, $genQs);
   }
@@ -27,6 +27,7 @@
       margin-top: 3rem;
       margin-bottom: 2rem;
       font-weight: 600;
+      color: $dark-600;
     }
 
     h1 {
@@ -34,7 +35,7 @@
     }
 
     h2 {
-      font-size: $xxl-text;
+      font-size: $xl-text;
     }
 
     h3 {

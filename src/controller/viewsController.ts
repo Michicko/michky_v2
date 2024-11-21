@@ -44,7 +44,6 @@ export const getNotes = async (req: Request, res: Response) => {
 
 export const getNote = async (req: Request, res: Response) => {
   const { slug } = req.params;
-  console.log(slug)
   let note = notes.find((note) => note.slug.toLowerCase() === slug.toLowerCase());
 
   if (note) {

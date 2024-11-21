@@ -1,12 +1,55 @@
-import hljs from "highlight.js/lib/core";
-import javascript from "highlight.js/lib/languages/javascript";
-import xml from "highlight.js/lib/languages/xml";
-import bash from "highlight.js/lib/languages/bash";
-import css from "highlight.js/lib/languages/css";
-
-hljs.registerLanguage("javascript", javascript);
-hljs.registerLanguage("bash", bash);
-hljs.registerLanguage("css", css);
-hljs.registerLanguage("xml", xml);
+import hljs from "./_highlightJs.js";
+import sendMessage from "./contact_form.js";
+import lazyLoad from "./lazyLoad.js";
 
 hljs.highlightAll();
+
+const contact_form: HTMLFormElement | null =
+  document.querySelector("#contact-form");
+
+if (contact_form) {
+  const nameInput: HTMLInputElement | null = document.querySelector("#name");
+  const emailInput: HTMLInputElement | null = document.querySelector("#email");
+  const messageInput: HTMLTextAreaElement | null =
+    document.querySelector("#message");
+  const contactFormBtn: HTMLButtonElement | null =
+    document.querySelector("#contact-btn");
+
+  contact_form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (
+      nameInput &&
+      emailInput &&
+      messageInput &&
+      contactFormBtn &&
+      contact_form
+    ) {
+      const name = nameInput.value;
+      const email = emailInput.value;
+      const message = messageInput.value;
+
+      sendMessage(
+        {
+          name,
+          email,
+          message,
+        },
+        contact_form,
+        contactFormBtn
+      );
+    }
+  });
+}
+
+// lazy load images when scrolled to view
+document.addEventListener("DOMContentLoaded", function () {
+  const projectImages: NodeListOf<HTMLImageElement> = document.querySelectorAll(
+    ".project__coverImage"
+  );
+  window.addEventListener("scroll", () => {
+    lazyLoad(projectImages);
+  });
+  window.addEventListener("resize", () => {
+    lazyLoad(projectImages);
+  });
+});
