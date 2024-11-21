@@ -14,6 +14,8 @@
   z-index: 200;
   padding: 0 2rem;
   background: $gray-100;
+  transform: translateY(-100%);
+  animation: slideIn 0.5s ease-in-out .05s forwards;
 
   @include breakpoints(mq-md) {
     padding: 0 4rem;
@@ -76,7 +78,6 @@
     transform: translateX(-100%);
     background: rgba(0, 0, 0, 0.6);
     transition: transform 0.4s linear;
-    
 
     &--show {
       transform: translateX(0);
@@ -95,7 +96,7 @@
       background: $light;
       transform: translateX(-100%);
       transition: transform 0.5s linear;
-      transition-delay: .1s;
+      transition-delay: 0.1s;
       display: flex;
       flex-direction: column;
 
@@ -196,5 +197,17 @@
         }
       }
     }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
