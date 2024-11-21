@@ -16,13 +16,23 @@
     min-height: 35rem;
   }
 
-  @include breakpoints(mq-lg) {
+  @include breakpoints(mq-md) {
     min-height: 40rem;
     padding-bottom: 7rem
   }
 
+  @include breakpoints(mq-lg) {
+    min-height: 60rem;
+  }
+
+  
+  @include breakpoints(mq-xl) {
+    min-height: 65rem;
+  }
+
 
   @include multiplier("padding-bottom", 7rem, $genQs);
+  @include multiplier("min-height", 65rem, $genQs);
 
 
   &__list {
