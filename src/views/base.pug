@@ -6,15 +6,15 @@ html(lang="en")
     link(rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/stackoverflow-dark.min.css")
     link(rel="stylesheet" href="/css/styles.css")
-    title(key="title") Michael Otaigbe | #{title}
-    script(src="/js/index.js" type="module" defer) 
+    script(src="/js/index.js" type="module" defer)
 
+    include ./partials/_mixins.pug 
     block helmet
-
-  include ./partials/_mixins.pug 
-  include ./partials/_nav.pug
-  include ./partials/_header.pug
-  include ./partials/_mobileNav.pug
+  
+    include ./partials/_nav.pug
+    include ./partials/_header.pug
+    include ./partials/_mobileNav.pug
+    
   body
     +nav()
     block content

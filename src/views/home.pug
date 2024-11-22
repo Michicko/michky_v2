@@ -1,7 +1,7 @@
 extends base
 
 block helmet 
-  title How to convert md to html
+  +seo('Michael Otaigbe | Software Engineer', 'Software Engineer.', "software engineer, software developer, web developer", '/')
 
 block content 
   +header('', 'padded-x')
@@ -15,10 +15,9 @@ block content
       span.block architecting and building solutions for digital products.
       //- .box
       //-   .spinning-box
-        //- .shadow
+      //- .shadow
   section.section.container.container--sm
     .project__list
       each project in projects 
         +project(project)
   +cta()
-      

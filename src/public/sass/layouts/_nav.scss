@@ -4,29 +4,37 @@
 .nav {
   width: 100%;
   height: 8rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 200;
-  padding: 0 2rem;
+
   background: $gray-100;
-  transform: translateY(-100%);
-  animation: slideIn 0.5s ease-in-out .05s forwards;
 
-  @include breakpoints(mq-md) {
-    padding: 0 4rem;
+  &__content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translateY(-100%);
+    animation: slideIn 0.5s ease-in-out 0.05s forwards;
+    padding: 0 2rem;
+
+    @include breakpoints(mq-md) {
+      padding: 0 4rem;
+    }
+
+    @include breakpoints(mq-lg) {
+      padding: 0 6rem;
+    }
+
+    @include multiplier("padding-right", 6rem, $genQs);
+    @include multiplier("padding-left", 6rem, $genQs);
   }
 
-  @include breakpoints(mq-lg) {
-    padding: 0 6rem;
-  }
-
-  @include multiplier("padding-right", 6rem, $genQs);
-  @include multiplier("padding-left", 6rem, $genQs);
   @include multiplier("height", 8rem, $genQs);
 
   &--scrolled {
@@ -37,12 +45,12 @@
     display: none;
     align-items: center;
 
-    @include breakpoints(mq-md) {
+    @include breakpoints(mq-sm) {
       display: inline-flex;
     }
 
     & > *:not(:last-child) {
-      margin-right: 6rem;
+      margin-right: 3rem;
       @include multiplier("margin-right", 6rem, $genQs);
     }
   }
@@ -56,6 +64,10 @@
     color: $dark-600;
     border-bottom: 2px solid $dark-600;
     border-color: transparent;
+
+    &.dsk {
+      display: none;
+    }
 
     @include multiplier("font-size", $md-text, $genQs);
     @include multiplier("border-width", 2px, $genQs);
@@ -73,11 +85,12 @@
     top: 0;
     bottom: 0;
     left: 0;
-    height: 100%;
+    right: 0;
+    height: 100vh;
     width: 100%;
     transform: translateX(-100%);
     background: rgba(0, 0, 0, 0.6);
-    transition: transform 0.4s linear;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 
     &--show {
       transform: translateX(0);
@@ -92,25 +105,11 @@
       top: 0;
       bottom: 0;
       left: 0;
-      width: 18rem;
+      width: 100%;
+      max-width: 27rem;
       background: $light;
-      transform: translateX(-100%);
-      transition: transform 0.5s linear;
-      transition-delay: 0.1s;
       display: flex;
       flex-direction: column;
-
-      @include breakpoints(mq-xxs) {
-        width: 25rem;
-      }
-
-      @include breakpoints(mq-xs) {
-        width: 30rem;
-      }
-
-      @include breakpoints(mq-sm) {
-        width: 35rem;
-      }
     }
 
     &--show &-bg {
@@ -132,12 +131,12 @@
       margin-top: 2rem;
 
       & > *:not(:last-child) {
-        margin-bottom: 0.5rem;
+        margin-bottom: 2.5rem;
       }
     }
 
     &-link {
-      font-size: $xl-text;
+      font-size: $md-text;
       font-weight: 500;
       color: $dark-500;
       text-decoration: none;
@@ -148,6 +147,7 @@
       border-color: transparent;
       margin-left: 2rem;
       padding-bottom: 0;
+      text-transform: capitalize;
 
       &:hover,
       &--active {
@@ -167,36 +167,68 @@
       background: transparent;
       border: 0;
       outline: none;
-      display: block;
+      display: flex;
+      align-items: center;
       position: relative;
+      height: 2rem;
+      width: 2.5rem;
+      z-index: 45;
 
-      @include breakpoints(mq-md) {
+      &-input {
         display: none;
+        height: 0;
+        width: 0;
       }
 
-      &:before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        content: "";
-        display: block;
-        z-index: 5;
-        height: 100%;
-        width: 100%;
-      }
+      &-line {
+        position: relative;
+        &,
+        &::before,
+        &::after {
+          height: 3px;
+          width: 2.5rem;
+          background: $dark-600;
+          display: block;
+          left: 0;
+          transform-origin: left;
+          transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+        }
 
-      &-icon {
-        height: 2.5rem;
-        width: 2.5rem;
-        fill: $dark-500;
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+        }
 
-        &.close {
-          display: none;
+        &::before {
+          top: -0.75rem;
+        }
+
+        &::after {
+          top: 0.8rem;
         }
       }
+
+      &-input:checked + &-line {
+        background: transparent;
+      }
+
+      &-input:checked + &-line::before {
+        transform: rotate(40deg);
+      }
+
+      &-input:checked + &-line::after {
+        transform: rotate(-40deg);
+      }
+
+      @include breakpoints(mq-sm) {
+        display: none;
+      }
     }
+  }
+
+  &__mobile-btn:has(.nav__mobile-btn-input:checked) + &__mobile {
+    transform: translateX(0);
   }
 }
 

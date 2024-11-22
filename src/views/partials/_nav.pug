@@ -1,8 +1,9 @@
 - const navlist = ["home", "notes", "contact"]
 mixin nav() 
   - const bg = project ? project.secondaryColor : '#f8f8f8';
-  nav(style=`background: ${bg}`).nav 
-    +logo()
-    +navList(navlist)
-    +navMenuBtn()
-    +mobileNav(navlist)
+  nav(style=`background: ${bg}`).nav
+    .nav__content 
+      +logo()
+      +navList(navlist)
+      +navMenuBtn()
+      +mobileNav(navlist)
