@@ -1,7 +1,7 @@
 extends base
 
 block helmet 
-  +seo(`${project.name}`, `${note.category} ${project.stack}`,`${project.tags}`, `/${project.slug}`)
+  +seo(`${project.name}`, `${project.category} ${project.stack}`,`${project.tags}`, `/${project.slug}`)
 
 block content 
   +header(project.headerBg, 'with-bg')

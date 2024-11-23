@@ -15,13 +15,8 @@ html(lang="en")
     include ./partials/_nav.pug
     include ./partials/_header.pug
     include ./partials/_mobileNav.pug
-
+    
   body
     +nav()
     block content
-    script
-      - window.dataLayer = window.dataLayer || [];
-      - function gtag(){dataLayer.push(arguments);}
-      - gtag('js', new Date());
-      - gtag('config', 'G-112PHSF9F5');
     include ./partials/_footer.pug

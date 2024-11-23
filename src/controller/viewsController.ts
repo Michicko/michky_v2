@@ -5,25 +5,34 @@ import {
   getList,
   generateLinearGradient,
   readFilePromise,
+  getFullPath,
 } from "../utils/helpers.js";
 import { marked } from "marked";
+import fs from "node:fs";
 
-const projectListPaths = await getListFromDirectory("../views/projects");
-const noteListPaths = await getListFromDirectory("../views/notes");
+const projectListPaths =
+  fs.existsSync(getFullPath("../views/projects")) &&
+  (await getListFromDirectory("../views/projects"));
 
-let projects = await getList(projectListPaths);
+const noteListPaths =
+  fs.existsSync(getFullPath("../views/notes")) &&
+  (await getListFromDirectory("../views/notes"));
 
-projects = projects.map((el) => {
-  const { gradient, primaryColor, secondaryColor } = generateLinearGradient();
-  return {
-    ...el,
-    background: gradient,
-    secondaryColor,
-    headerBg: `linear-gradient(to bottom, ${secondaryColor}, ${primaryColor})`,
-  };
-});
+let projects = projectListPaths && (await getList(projectListPaths));
 
-const notes = await getList(noteListPaths);
+projects =
+  projects &&
+  projects.map((el) => {
+    const { gradient, primaryColor, secondaryColor } = generateLinearGradient();
+    return {
+      ...el,
+      background: gradient,
+      secondaryColor,
+      headerBg: `linear-gradient(to bottom, ${secondaryColor}, ${primaryColor})`,
+    };
+  });
+
+const notes = noteListPaths && (await getList(noteListPaths));
 
 export const getHome = async (req: Request, res: Response) => {
   res.render("home", {
@@ -60,9 +69,9 @@ export const getNotes = async (req: Request, res: Response) => {
 
 export const getNote = async (req: Request, res: Response) => {
   const { slug } = req.params;
-  let note = notes.find(
-    (note) => note.slug.toLowerCase() === slug.toLowerCase()
-  );
+  let note =
+    notes &&
+    notes.find((note) => note.slug.toLowerCase() === slug.toLowerCase());
 
   if (note) {
     const markdown = await readFilePromise(note.fileDir, "utf-8");
@@ -70,7 +79,6 @@ export const getNote = async (req: Request, res: Response) => {
   }
 
   res.render("note", {
-    title: note?.title,
     url: req.originalUrl,
     note,
     host: `${req.protocol}://${req.get("host")}`,
@@ -79,9 +87,11 @@ export const getNote = async (req: Request, res: Response) => {
 
 export const getProject = async (req: Request, res: Response) => {
   const { slug } = req.params;
-  const project = projects.find(
-    (project) => project.slug.toLowerCase() === slug.toLowerCase()
-  );
+  const project =
+    projects &&
+    projects.find(
+      (project) => project.slug.toLowerCase() === slug.toLowerCase()
+    );
 
   if (project) {
     const markdown = await readFilePromise(project.fileDir, "utf-8");

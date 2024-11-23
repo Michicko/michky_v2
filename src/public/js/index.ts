@@ -4,6 +4,21 @@ import lazyLoad from "./lazyLoad.js";
 
 hljs.highlightAll();
 
+declare global {
+  interface Window { 
+    dataLayer: any 
+  }
+}
+
+window.dataLayer = window.dataLayer || [];
+
+function gtag(a, b) {
+  window.dataLayer.push(arguments);
+}
+
+gtag("js", new Date());
+gtag("config", "G-112PHSF9F5");
+
 const contact_form: HTMLFormElement | null =
   document.querySelector("#contact-form");
 
