@@ -96,6 +96,6 @@ export const getProject = async (req: Request, res: Response) => {
   });
 };
 
-export const getNotFound = (req: Request, res: Response) => {
+export const getNotFound = (_req: Request, res: Response) => {
   res.send("Not found page");
 };
