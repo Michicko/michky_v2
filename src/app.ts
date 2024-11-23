@@ -19,8 +19,6 @@ if (process.env.NODE_ENV === "development") {
 
 app.use((req, _res, next) => {
   req.requestedTime = new Date().toISOString();
-  console.log(req.requestedTime);
-
   next();
 });
 

@@ -1,5 +1,8 @@
 extends base
 
+block helmet 
+  +seo(`${note.title}`, `${note.description}`,`${note.tags}`, `/notes/${note.slug}`)
+
 block content 
   +header('', 'with-bg')
     .header__text-box 

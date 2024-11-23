@@ -6,16 +6,22 @@ html(lang="en")
     link(rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/stackoverflow-dark.min.css")
     link(rel="stylesheet" href="/css/styles.css")
+    script(async src="https://www.googletagmanager.com/gtag/js?id=G-112PHSF9F5")
     script(src="/js/index.js" type="module" defer)
 
     include ./partials/_mixins.pug 
     block helmet
-  
+
     include ./partials/_nav.pug
     include ./partials/_header.pug
     include ./partials/_mobileNav.pug
-    
+
   body
     +nav()
     block content
+    script
+      - window.dataLayer = window.dataLayer || [];
+      - function gtag(){dataLayer.push(arguments);}
+      - gtag('js', new Date());
+      - gtag('config', 'G-112PHSF9F5');
     include ./partials/_footer.pug
