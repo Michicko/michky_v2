@@ -41,7 +41,6 @@
     grid-gap: 7rem;
 
     @for $i from 1 through 3 {
-      
       & > *:nth-child(#{$i}) {
         opacity: 0;
         @include fade-in(0.5s, $i * 0.2s);

@@ -3,7 +3,7 @@
 
 .note {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 4.5rem auto;
   grid-column-gap: 2rem;
   padding-bottom: 4rem;
   position: relative;
@@ -12,6 +12,7 @@
   @include breakpoints(mq-md) {
     grid-column-gap: 5rem;
     margin-bottom: 0.5rem;
+    grid-template-columns: 6rem auto;
   }
 
   &::before {
@@ -37,12 +38,11 @@
     }
   }
 
-  p.desc{
+  p.desc {
     font-size: $base-text;
     font-weight: 400;
     color: $dark-500;
     line-height: 1.5;
-
 
     @include breakpoints(mq-md) {
       font-size: $md-text;
@@ -64,7 +64,7 @@
       font-size: $xs-text;
       text-transform: uppercase;
       font-weight: 300;
-      margin-bottom: .25rem;
+      margin-bottom: 0.25rem;
 
       @include breakpoints(mq-md) {
         font-size: $sm-text;
@@ -91,7 +91,6 @@
     font-weight: 600;
     color: $dark-600;
     margin-bottom: 1rem;
-
 
     @include breakpoints(mq-md) {
       font-size: $lg-text;

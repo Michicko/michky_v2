@@ -6,8 +6,9 @@ import {
   generateLinearGradient,
   readFilePromise,
   getFullPath,
+  getHost,
 } from "../utils/helpers.js";
-import { marked } from "marked";
+import marked from "../utils/marked.js";
 import fs from "node:fs";
 
 const projectListPaths =
@@ -39,14 +40,14 @@ export const getHome = async (req: Request, res: Response) => {
     title: "Home page",
     projects,
     url: req.originalUrl,
-    host: `${req.protocol}://${req.get("host")}`,
+    host: getHost(req),
   });
 };
 
 export const getAbout = (req: Request, res: Response) => {
   res.render("about", {
     title: "About page",
-    host: `${req.protocol}://${req.get("host")}`,
+    host: getHost(req),
   });
 };
 
@@ -54,7 +55,7 @@ export const getContact = (req: Request, res: Response) => {
   res.render("contact", {
     title: "Contact",
     url: req.originalUrl,
-    host: `${req.protocol}://${req.get("host")}`,
+    host: getHost(req),
   });
 };
 
@@ -63,7 +64,7 @@ export const getNotes = async (req: Request, res: Response) => {
     title: "Notes",
     notes,
     url: req.originalUrl,
-    host: `${req.protocol}://${req.get("host")}`,
+    host: getHost(req),
   });
 };
 
@@ -81,7 +82,7 @@ export const getNote = async (req: Request, res: Response) => {
   res.render("note", {
     url: req.originalUrl,
     note,
-    host: `${req.protocol}://${req.get("host")}`,
+    host: getHost(req),
   });
 };
 
@@ -102,7 +103,7 @@ export const getProject = async (req: Request, res: Response) => {
     title: "single project page",
     project,
     url: req.originalUrl,
-    host: `${req.protocol}://${req.get("host")}`,
+    host: getHost(req),
   });
 };
 

@@ -75,7 +75,7 @@
     &:hover,
     &.active,
     &--active {
-      border-color: $dark-600;
+      border-color: $dark-200;
     }
   }
 
@@ -90,7 +90,7 @@
     width: 100%;
     transform: translateX(-100%);
     background: rgba(0, 0, 0, 0.6);
-    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 0.4s $animate;
 
     &--show {
       transform: translateX(0);
@@ -151,7 +151,7 @@
 
       &:hover,
       &--active {
-        border-color: $dark-500;
+        border-color: $dark-200;
       }
     }
 
@@ -171,7 +171,7 @@
       align-items: center;
       position: relative;
       height: 2rem;
-      width: 2.5rem;
+      width: 2.6rem;
       z-index: 45;
 
       &-input {
@@ -191,7 +191,7 @@
           display: block;
           left: 0;
           transform-origin: left;
-          transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+          transition: transform 0.3s $animate;
         }
 
         &::before,

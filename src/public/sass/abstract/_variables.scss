@@ -23,8 +23,8 @@ $dark-100: #d9d5c9;
 $dark-200: #c6c5c3;
 $dark-300: #9b9b9b;
 $dark-400: #888888;
-$dark-500: #383838;
-$dark-600: #212121;
+$dark-500: #514f4d;
+$dark-600: #3c3b39;
 $secondary-400: #d43c2b;
 $secondary: #edae0e;
 $danger: #d9534f;
@@ -61,6 +61,7 @@ $lh-base: 1.5;
 $lh-lg: 1.8;
 $font-heading: "Bogart";
 $font-body: "Biotif";
+$animate: cubic-bezier(0.19, 1, 0.22, 1);
 $bp-low: 12.5rem; /* 200px */
 $bp-xxs: 20rem; /* 320px */
 $bp-xxs: 23.5rem; /* 375px */

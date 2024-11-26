@@ -4,6 +4,7 @@ import { dirname } from "node:path";
 import path from "node:path";
 import { promisify } from "node:util";
 import { readFile, readdir } from "node:fs";
+import { Request } from "express";
 
 export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = dirname(__filename);
@@ -116,3 +117,5 @@ export const getList = async (listPaths: string[]) => {
     })
   );
 };
+
+export const getHost = (req: Request) => `${req.protocol}://${req.get("host")}`
