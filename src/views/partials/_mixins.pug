@@ -12,7 +12,7 @@ mixin navList(navlist)
 
 mixin project(project)
   div(class='project__wrapper' style=`background: ${project.background}`)
-    a(href=`/${project.slug}`).project
+    a(href=`/projects/${project.slug}`).project
       .project__info 
         p.project__category #{project.category}
         h3.project__name #{project.name}

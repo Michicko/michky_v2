@@ -4,7 +4,6 @@ import {
   getHome,
   getNote,
   getNotes,
-  getNotFound,
   getProject,
 } from "../controller/viewsController.js";
 
@@ -20,8 +19,6 @@ router.get("/notes", getNotes);
 
 router.get("/notes/:slug", getNote);
 
-router.get("/:slug", getProject);
-
-router.get("*", getNotFound);
+router.get("/projects/:slug", getProject);
 
 export default router;

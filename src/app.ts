@@ -1,8 +1,10 @@
 import "dotenv/config";
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import morgan from "morgan";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import AppError from "./utils/AppError.js";
+import errorController from "./controller/errorController.js";
 
 // router
 import viewsRouter from "./routes/viewsRoute.js";
@@ -37,5 +39,11 @@ app.set("views", path.join(__dirname, "./views"));
 
 // routes
 app.use("/", viewsRouter);
+
+app.all("*", (req: Request, _res: Response, next: NextFunction) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
+});
+
+app.use(errorController);
 
 export default app;

@@ -36,6 +36,15 @@
   background: $dark-600;
 }
 
+@for $i from 1 through 10 {
+  .mb-#{$i} {
+    margin-bottom: #{$i}rem;
+  }
+  .ml-#{$i} {
+    margin-left: #{$i}rem;
+  }
+}
+
 .link {
- @include link();
+  @include link();
 }

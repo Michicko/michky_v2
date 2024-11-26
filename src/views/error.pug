@@ -1,0 +1,11 @@
+extends base
+
+block helmet 
+    +seo(`Michael Otaigbe | ${title}`, `${message}`, "software engineer, software developer, web developer", '/')
+
+block content
+    +header('', 'center-md')
+        h2.heading.heading--secondary.mb-2 
+            span= title  
+            span.ml-1 😥 😢
+        p.text= message

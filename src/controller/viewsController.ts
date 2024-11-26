@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import {
   getMarkdownContent,
   getListFromDirectory,
@@ -7,9 +7,12 @@ import {
   readFilePromise,
   getFullPath,
   getHost,
+  unslug,
 } from "../utils/helpers.js";
 import marked from "../utils/marked.js";
 import fs from "node:fs";
+import catchAsync from "../utils/catchAsync.js";
+import AppError from "../utils/AppError.js";
 
 const projectListPaths =
   fs.existsSync(getFullPath("../views/projects")) &&
@@ -35,29 +38,35 @@ projects =
 
 const notes = noteListPaths && (await getList(noteListPaths));
 
-export const getHome = async (req: Request, res: Response) => {
-  res.render("home", {
-    title: "Home page",
-    projects,
-    url: req.originalUrl,
-    host: getHost(req),
-  });
-};
+export const getHome = catchAsync(
+  async (req: Request, res: Response, _next: NextFunction) => {
+    res.render("home", {
+      title: "Home page",
+      projects,
+      url: req.originalUrl,
+      host: getHost(req),
+    });
+  }
+);
 
-export const getAbout = (req: Request, res: Response) => {
-  res.render("about", {
-    title: "About page",
-    host: getHost(req),
-  });
-};
+export const getAbout = catchAsync(
+  catchAsync(async (req: Request, res: Response, _next: NextFunction) => {
+    res.render("about", {
+      title: "About page",
+      host: getHost(req),
+    });
+  })
+);
 
-export const getContact = (req: Request, res: Response) => {
-  res.render("contact", {
-    title: "Contact",
-    url: req.originalUrl,
-    host: getHost(req),
-  });
-};
+export const getContact = catchAsync(
+  async (req: Request, res: Response, _next: NextFunction) => {
+    res.render("contact", {
+      title: "Contact",
+      url: req.originalUrl,
+      host: getHost(req),
+    });
+  }
+);
 
 export const getNotes = async (req: Request, res: Response) => {
   res.render("notes", {
@@ -68,45 +77,49 @@ export const getNotes = async (req: Request, res: Response) => {
   });
 };
 
-export const getNote = async (req: Request, res: Response) => {
-  const { slug } = req.params;
-  let note =
-    notes &&
-    notes.find((note) => note.slug.toLowerCase() === slug.toLowerCase());
+export const getNote = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { slug } = req.params;
+    let note =
+      notes &&
+      notes.find((note) => note.slug.toLowerCase() === slug.toLowerCase());
 
-  if (note) {
+    if (!note) {
+      return next(new AppError(`No note with title "${unslug(slug)}"`, 404));
+    }
+
     const markdown = await readFilePromise(note.fileDir, "utf-8");
     note.content = await marked.parse(getMarkdownContent(markdown));
+
+    res.render("note", {
+      url: req.originalUrl,
+      note,
+      host: getHost(req),
+    });
   }
+);
 
-  res.render("note", {
-    url: req.originalUrl,
-    note,
-    host: getHost(req),
-  });
-};
+export const getProject = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { slug } = req.params;
+    const project =
+      projects &&
+      projects.find(
+        (project) => project.slug.toLowerCase() === slug.toLowerCase()
+      );
 
-export const getProject = async (req: Request, res: Response) => {
-  const { slug } = req.params;
-  const project =
-    projects &&
-    projects.find(
-      (project) => project.slug.toLowerCase() === slug.toLowerCase()
-    );
+    if (!project) {
+      return next(new AppError(`No project with title "${unslug(slug)}"`, 404));
+    }
 
-  if (project) {
     const markdown = await readFilePromise(project.fileDir, "utf-8");
     project.content = await marked.parse(getMarkdownContent(markdown));
+
+    res.render("project", {
+      title: "single project page",
+      project,
+      url: req.originalUrl,
+      host: getHost(req),
+    });
   }
-
-  res.render("project", {
-    title: "single project page",
-    project,
-    url: req.originalUrl,
-    host: getHost(req),
-  });
-};
-
-export const getNotFound = (_req: Request, res: Response) => {
-  res.send("Not found page");
-};
+);

@@ -31,7 +31,7 @@ export const generateLinearGradient = () => {
 
 type valueof<T> = T[keyof T];
 
-type Frontmatter = {
+export type Frontmatter = {
   [key: string]: any;
 };
 
@@ -119,3 +119,5 @@ export const getList = async (listPaths: string[]) => {
 };
 
 export const getHost = (req: Request) => `${req.protocol}://${req.get("host")}`
+
+export const unslug = (str: string) => str.replace(/-/g, ' ');
