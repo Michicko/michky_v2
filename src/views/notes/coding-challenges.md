@@ -23,4 +23,4 @@ These [coding challenges](https://codingchallenges.fyi/challenges/intro/) are pi
 
 | Challenge # | Challenge | Link / Tutorial |
 | --- | --- | --- |
-| 001  | [wc tool](https://github.com/Michicko/coding-challenges/wc-tool/) | - |
+| 001  | [wc tool](https://github.com/Michicko/coding-challenges/tree/main/wc-tool) | - |
